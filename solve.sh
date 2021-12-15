@@ -51,6 +51,11 @@ day=$2
 raw_part=$3
 part="part$3.py"
 
+script_path=$(readlink -f "$0")
+script_location=$(dirname "$script_path")
+
+cd "$script_location"
+
 echo $year | grep -E -q '^[0-9]+$' || die "Numeric argument required, \"$year\" provided"
 echo $day | grep -E -q '^[0-9]+$' || die "Numeric argument required, \"$day\" provided"
 echo $raw_part | grep -E -q '^[0-9]+$' || die "Numeric argument required, \"$raw_part\" provided"
@@ -58,7 +63,7 @@ echo $raw_part | grep -E -q '^[0-9]+$' || die "Numeric argument required, \"$raw
 [ -d "$year/$day" ] || die "Day \"$day\" of year \"$year\" not found."
 [ -f "$year/$day/$part" ] || die "Part \"$raw_part\" for day \"$day\" of year \"$year\" not found."
 
-cd $year/$day/
+cd "$year/$day/"
 
 [ $raw_output == 1 ] && ./$part
 [ $raw_output == 0 ] && printf "Answer:\n\n$(./$part)" | cowsay -n -f "$(cowsay -l | tail -n +2 | tr ' ' '\n' | sort -R | head -n 1)" | lolcat
