@@ -1,7 +1,6 @@
 package adventofcode.problems
 
 import adventofcode.Problem
-import io.Source.stdin
 
 object Problem1 extends Problem {
   override def part1(input: List[String]): String = {
