@@ -50,7 +50,7 @@ if [ -f "$source_file_path" ] || [ -d "$input_folder_path" ] || [ -f "$input_fil
   [ $force_flag == 0 ] && die "This problem already exists!"
 fi
 
-echo "package adventofcode.problems
+echo -n "package adventofcode.problems
 
 import adventofcode.Problem
 
@@ -67,10 +67,10 @@ object Problem${problem} extends Problem {
 
 mkdir -p "$input_folder_path"
 
-echo "" >"$input_file_path"
-echo "" >"$sample_file_path"
+echo -n "" >"$input_file_path"
+echo -n "" >"$sample_file_path"
 
-echo "package adventofcode.problems
+echo -n "package adventofcode.problems
 
 import adventofcode.TestUtils
 import org.scalatest.wordspec.AnyWordSpec
