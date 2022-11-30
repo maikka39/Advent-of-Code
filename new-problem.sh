@@ -79,21 +79,21 @@ import org.scalatest.matchers.should.Matchers
 class Problem${problem}Spec extends AnyWordSpec with Matchers with TestUtils {
   \"part 1\" should {
     \"solve the sample input\" in {
-      Problem${problem}.part1(getInput(${problem}, \"sample.txt\")) shouldBe \"1\"
+      Problem${problem}.part1(getInput(${problem}, \"sample.txt\")) shouldBe \"\"
     }
 
     \"solve the actual input\" in {
-      Problem${problem}.part1(getInput(${problem}, \"input.txt\")) shouldBe \"1\"
+      Problem${problem}.part1(getInput(${problem}, \"input.txt\")) shouldBe \"\"
     }
   }
 
   \"part 2\" should {
     \"solve the sample input\" in {
-      Problem${problem}.part2(getInput(${problem}, \"sample.txt\")) shouldBe \"1\"
+      Problem${problem}.part2(getInput(${problem}, \"sample.txt\")) shouldBe \"\"
     }
 
     \"solve the actual input\" in {
-      Problem${problem}.part2(getInput(${problem}, \"input.txt\")) shouldBe \"1\"
+      Problem${problem}.part2(getInput(${problem}, \"input.txt\")) shouldBe \"\"
     }
   }
 }
