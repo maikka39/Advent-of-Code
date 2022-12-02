@@ -1,6 +1,7 @@
 package adventofcode
 
-import adventofcode.FindPuzzle.findProblemReference
+import adventofcode.utils.FindPuzzle.findProblemReference
+import adventofcode.utils.StringUtils._
 
 import scala.io.Source.stdin
 import scala.util.{Failure, Success, Try}
@@ -13,8 +14,8 @@ import scala.util.{Failure, Success, Try}
     .flatMap(part => problem.map(_ -> part))
     .map(d =>
         d._2 match
-        case 1 => d._1.part1(stdin.getLines.toList)
-        case 2 => d._1.part2(stdin.getLines.toList)
+        case 1 => d._1.part1(stdin.getLines.mkString("\n").toInput)
+        case 2 => d._1.part2(stdin.getLines.mkString("\n").toInput)
     )
 
   solution match {

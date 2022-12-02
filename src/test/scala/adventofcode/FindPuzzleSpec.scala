@@ -3,6 +3,7 @@ package adventofcode
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 import adventofcode.problems.Problem1
+import adventofcode.utils.FindPuzzle
 
 class FindPuzzleSpec extends AnyWordSpec with Matchers {
   "problemReference" should {

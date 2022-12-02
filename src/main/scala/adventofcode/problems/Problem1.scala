@@ -1,33 +1,32 @@
 package adventofcode.problems
 
-import adventofcode.Problem
+import adventofcode.utils.AnswerUtils.given
+import adventofcode.{Answer, Input, Problem}
+
+import scala.language.implicitConversions
 
 object Problem1 extends Problem {
-  override def part1(input: List[String]): String = {
+  override def part1(input: Input): Answer = {
     input
-      .mkString("\n")
-      .split("\n\n")
+      .toSubInputs
       .map(_
-        .split('\n')
+        .lines
         .map(_.toInt)
         .sum
       )
       .max
-      .toString
   }
 
-  override def part2(input: List[String]): String = {
+  override def part2(input: Input): Answer = {
     input
-      .mkString("\n")
-      .split("\n\n")
+      .toSubInputs
       .map(_
-        .split('\n')
+        .lines
         .map(_.toInt)
         .sum
       )
       .sorted
       .takeRight(3)
       .sum
-      .toString
   }
 }

@@ -52,15 +52,18 @@ fi
 
 echo -n "package adventofcode.problems
 
-import adventofcode.Problem
+import adventofcode.utils.AnswerUtils.given
+import adventofcode.{Answer, Input, Problem}
+
+import scala.language.implicitConversions
 
 object Problem${problem} extends Problem {
-  override def part1(input: List[String]): String = {
-    0.toString
+  override def part1(input: Input): Answer = {
+    0
   }
 
-  override def part2(input: List[String]): String = {
-    0.toString
+  override def part2(input: Input): Answer = {
+    0
   }
 }
 " >"$source_file_path"
@@ -79,24 +82,24 @@ import org.scalatest.matchers.should.Matchers
 class Problem${problem}Spec extends AnyWordSpec with Matchers with TestUtils {
   \"part 1\" should {
     \"solve the sample input\" in {
-      Problem${problem}.part1(getInput(${problem}, \"sample.txt\")) shouldBe \"\"
+      Problem${problem}.part1(getInput(${problem}, \"sample.txt\")).answer shouldBe \"\"
     }
 
     \"solve the actual input\" in {
-      Problem${problem}.part1(getInput(${problem}, \"input.txt\")) shouldBe \"\"
+      Problem${problem}.part1(getInput(${problem}, \"input.txt\")).answer shouldBe \"\"
     }
   }
 
   \"part 2\" should {
     \"solve the sample input\" in {
-      Problem${problem}.part2(getInput(${problem}, \"sample.txt\")) shouldBe \"\"
+      Problem${problem}.part2(getInput(${problem}, \"sample.txt\")).answer shouldBe \"\"
     }
 
     \"solve the actual input\" in {
-      Problem${problem}.part2(getInput(${problem}, \"input.txt\")) shouldBe \"\"
+      Problem${problem}.part2(getInput(${problem}, \"input.txt\")).answer shouldBe \"\"
     }
   }
 }
 " >"$test_file_path"
 
-echo "Created Problem${problem}"
+echo "Created Problem ${problem}"

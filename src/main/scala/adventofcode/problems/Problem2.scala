@@ -1,10 +1,14 @@
 package adventofcode.problems
 
-import adventofcode.Problem
+import adventofcode.utils.AnswerUtils.given
+import adventofcode.{Answer, Input, Problem}
+
+import scala.language.implicitConversions
 
 object Problem2 extends Problem {
-  override def part1(input: List[String]): String = {
+  override def part1(input: Input): Answer = {
     input
+      .lines
       .map(game => {
         val opponent = game.head - 'A' + 1
         val yours = game.last - 'X' + 1
@@ -18,11 +22,11 @@ object Problem2 extends Problem {
         yours + bonusPoints
       })
       .sum
-      .toString
   }
 
-  override def part2(input: List[String]): String = {
+  override def part2(input: Input): Answer = {
     input
+      .lines
       .map(game => {
         val opponent = game.head - 'A' + 1
         val yours = game.last - 'X' + 1 match
@@ -39,6 +43,5 @@ object Problem2 extends Problem {
         yours + bonusPoints
       })
       .sum
-      .toString
   }
 }
