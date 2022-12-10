@@ -1,7 +1,6 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.utils.IterableUtils.*
 import adventofcode.{Answer, Input, Problem}
 
 import scala.language.implicitConversions
@@ -20,7 +19,7 @@ object Problem7 extends Problem {
               case "/" => currentPath.empty -> sizes
               case folder => currentPath.appended(folder) -> sizes
           case s"dir $_" => pathAndSize
-          case s"$size $_" => currentPath -> currentPath.prepended("").accumulate("/").foldLeft(sizes)((newSizes, path) => newSizes.updated(path, newSizes.getOrElse(path, 0) + size.toInt))
+          case s"$size $_" => currentPath -> currentPath.scan("")(_ + "/" + _).foldLeft(sizes)((newSizes, path) => newSizes.updated(path, newSizes.getOrElse(path, 0) + size.toInt))
       }
       ._2
   }
