@@ -16,8 +16,8 @@ object Problem8 extends Problem {
       .map(delta => {
         Iterator.iterate((row, col))(_ + delta)
           .drop(1)
-          .takeWhile(p => grid.isValidIndex(p._1) && grid(p._1).isValidIndex(p._2))
-          .map(p => grid(p._1)(p._2))
+          .takeWhile(grid.isValidIndex)
+          .map(grid(_))
       })
   }
 
