@@ -6,6 +6,8 @@ object NumberUtils {
   implicit class IntUtils(n: Int) {
     @targetName("floorMod")
     def %%(b: Int): Int = Math.floorMod(n, b)
+
+    def concat(b: Int): Int = (n.toString + b.toString).toInt
   }
 
   implicit class LongUtils(n: Long) {
