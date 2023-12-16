@@ -5,6 +5,7 @@ import adventofcode.utils.StringUtils._
 class Input(private val rawInput: String) {
   def string: String = rawInput
   def lines: List[String] = string.split('\n').toList
+  def grid: List[List[Char]] = lines.map(_.toList)
 
   def splitByBlankLines: List[String] = string.split("\n\n").toList
   def splitByBlankLine: (Input, Input) = {

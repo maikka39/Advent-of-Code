@@ -24,6 +24,10 @@ object TupleUtils {
 
     def neighbors: Seq[(Int, Int)] = ((0, 1) :: (0, -1) :: (1, 0) :: (-1, 0) :: Nil).map(tuple + _)
 
+    def neighborsDiagonal: Seq[(Int, Int)] = ((-1, -1) :: (-1, 0) :: (-1, 1) :: (0, -1) :: (0, 1) :: (1, -1) :: (1, 0) :: (1, 1) :: Nil).map(tuple + _)
+
+
     def neighbors[A](grid: Seq[Seq[A]]): Seq[(Int, Int)] = neighbors.filter(grid.isValidIndex)
+    def neighborsDiagonal[A](grid: Seq[Seq[A]]): Seq[(Int, Int)] = neighborsDiagonal.filter(grid.isValidIndex)
   }
 }
