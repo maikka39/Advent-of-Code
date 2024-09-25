@@ -15,6 +15,9 @@ object TupleUtils {
 
     @targetName("multiply")
     def *(n: Int): (Int, Int) = (tuple._1 * n, tuple._2 * n)
+    
+    @targetName("gt")
+    def >(other: (Int, Int)): Boolean = tuple._1 > other._1 && tuple._2 > other._2
 
     def abs: (Int, Int) = (tuple._1.abs, tuple._2.abs)
 
