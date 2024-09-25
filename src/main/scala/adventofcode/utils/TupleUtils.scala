@@ -6,6 +6,10 @@ import scala.annotation.targetName
 import scala.collection.mutable.ListBuffer
 
 object TupleUtils {
+  implicit class SameTupleImprovements[A](tuple: (A, A)) {
+    def toSeq: Seq[A] = Seq(tuple._1, tuple._2)
+  }
+
   implicit class IntTupleImprovements(tuple: (Int, Int)) {
     @targetName("add")
     def +(other: (Int, Int)): (Int, Int) = (tuple._1 + other._1, tuple._2 + other._2)
@@ -15,7 +19,7 @@ object TupleUtils {
 
     @targetName("multiply")
     def *(n: Int): (Int, Int) = (tuple._1 * n, tuple._2 * n)
-    
+
     @targetName("gt")
     def >(other: (Int, Int)): Boolean = tuple._1 > other._1 && tuple._2 > other._2
 
@@ -29,8 +33,10 @@ object TupleUtils {
 
     def neighborsDiagonal: Seq[(Int, Int)] = ((-1, -1) :: (-1, 0) :: (-1, 1) :: (0, -1) :: (0, 1) :: (1, -1) :: (1, 0) :: (1, 1) :: Nil).map(tuple + _)
 
-
     def neighbors[A](grid: Seq[Seq[A]]): Seq[(Int, Int)] = neighbors.filter(grid.isValidIndex)
+
     def neighborsDiagonal[A](grid: Seq[Seq[A]]): Seq[(Int, Int)] = neighborsDiagonal.filter(grid.isValidIndex)
+
+    def manhattanDistance(other: (Int, Int)): Int = (tuple - other).abs.toSeq.sum
   }
 }

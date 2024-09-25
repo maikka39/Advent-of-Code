@@ -18,12 +18,12 @@ object SeqUtils {
 
     def apply(n: Pos2d): A = grid(n._1)(n._2)
 
-    def locateWhere(f: A => Boolean): Set[Pos2d] =
-      grid.zipWithIndex.flatMap((row, y) => row.zipWithIndex.filter((v, x) => f(v)).map(y -> _._2)).toSet
+    def locateWhere(f: A => Boolean): Seq[Pos2d] =
+      grid.zipWithIndex.flatMap((row, y) => row.zipWithIndex.filter((v, x) => f(v)).map(y -> _._2))
 
     def locate(x: A): Option[Pos2d] = locateWhere(_ == x).headOption
 
-    def tupleIndices: Set[Pos2d] = grid.zipWithIndex.flatMap((row, y) => row.indices.map(x => y -> x)).toSet
+    def tupleIndices: Seq[Pos2d] = grid.zipWithIndex.flatMap((row, y) => row.indices.map(x => y -> x))
 
     def zipWithTupleIndex: Seq[Seq[(A, (Int, Int))]] = grid.zipWithIndex.map((row, y) => row.zipWithIndex.map((value, x) => value -> (y -> x)))
   }
