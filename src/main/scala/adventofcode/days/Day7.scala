@@ -1,10 +1,10 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
-object Problem7 extends Problem {
+object Day7 extends Day {
   private def toScore(char: Char): Int = {
     char match {
       case 'A' => 14

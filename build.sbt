@@ -10,6 +10,6 @@ lazy val root = (project in file("."))
     name := "Advent of Code",
     libraryDependencies ++= Seq(
       scalaTest % Test,
-      "org.scala-lang" % "scala-reflect" % "2.13.10",
+      "org.scala-lang" % "scala-reflect" % "2.13.14",
     )
   )

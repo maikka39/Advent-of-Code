@@ -1,14 +1,14 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
 import adventofcode.utils.SeqUtils.{Pos2d, given}
 import adventofcode.utils.TupleUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
 import scala.annotation.tailrec
 
-object Problem10 extends Problem {
+object Day10 extends Day {
   private def parseMap(input: String) = {
     val origGrid = input.grid
 

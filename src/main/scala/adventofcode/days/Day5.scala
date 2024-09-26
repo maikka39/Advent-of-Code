@@ -1,13 +1,13 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 import adventofcode.utils.StringUtils.StringImprovements
 
 import scala.annotation.tailrec
 import scala.language.implicitConversions
 
-object Problem5 extends Problem {
+object Day5 extends Day {
   private case class Mapping(source: Long, dest: Long, length: Long)
 
   private def getInputMappings(b: String) = {

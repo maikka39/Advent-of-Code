@@ -1,10 +1,10 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
-object Problem6 extends Problem {
+object Day6 extends Day {
   private def winCount(totalTime: Long, recordDistance: Long): Int = {
     def result(holdTime: Long): Boolean = (totalTime - holdTime) * holdTime > recordDistance
 

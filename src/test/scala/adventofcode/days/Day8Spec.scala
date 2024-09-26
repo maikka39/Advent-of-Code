@@ -1,0 +1,31 @@
+package adventofcode.days
+
+import adventofcode.TestUtils
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers
+
+class Day8Spec extends AnyWordSpec with Matchers with TestUtils {
+  "part 1" should {
+    "solve the sample input" in {
+      Day8.part1(getInput(8, "sample.txt")).answer shouldBe 2
+    }
+
+    "solve the second sample input" in {
+      Day8.part1(getInput(8, "sample2.txt")).answer shouldBe 6
+    }
+
+    "solve the actual input" in {
+      Day8.part1(getInput(8, "input.txt")).answer shouldBe 19637
+    }
+  }
+
+  "part 2" should {
+    "solve the sample input" in {
+      Day8.part2(getInput(8, "sample3.txt")).answer shouldBe 6
+    }
+
+    "solve the actual input" in {
+      Day8.part2(getInput(8, "input.txt")).answer shouldBe 8811050362409L
+    }
+  }
+}

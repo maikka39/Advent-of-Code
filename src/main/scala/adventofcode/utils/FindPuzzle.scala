@@ -1,16 +1,16 @@
 package adventofcode.utils
 
-import adventofcode.Problem
+import adventofcode.Day
 
 import scala.util.Try
 
 object FindPuzzle {
-  def findProblemReference(problemNumber: Int): Try[Problem] = Try {
+  def findDayReference(dayNumber: Int): Try[Day] = Try {
     import scala.reflect.runtime.universe as ru
     val runtimeMirror = ru.runtimeMirror(getClass.getClassLoader)
-    val path = s"adventofcode.problems.Problem$problemNumber"
+    val path = s"adventofcode.days.Day$dayNumber"
     val staticModule = runtimeMirror.staticModule(path)
     val reflectModule = runtimeMirror.reflectModule(staticModule)
-    reflectModule.instance.asInstanceOf[Problem]
+    reflectModule.instance.asInstanceOf[Day]
   }
 }

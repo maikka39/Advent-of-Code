@@ -1,12 +1,12 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
 import scala.language.implicitConversions
 
-object Problem9 extends Problem {
+object Day9 extends Day {
   private def extrapolate(values: List[Int]): Int = {
     if (values.forall(_ == 0))
       0

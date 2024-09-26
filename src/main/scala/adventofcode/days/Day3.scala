@@ -1,14 +1,14 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 import adventofcode.utils.TupleUtils.IntTupleImprovements
 import adventofcode.utils.SeqUtils.Seq2dImprovements
 
 import scala.language.implicitConversions
 
-object Problem3 extends Problem {
+object Day3 extends Day {
   private def findNumbers(input: String) = {
     input
       .splitLines

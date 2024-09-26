@@ -1,14 +1,14 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
 import adventofcode.utils.IteratorUtils.given
 import adventofcode.utils.MathUtils.lcm
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
 import scala.language.implicitConversions
 
-object Problem8 extends Problem {
+object Day8 extends Day {
   private def path(network: Map[String, (String, String)], turns: Iterable[Boolean], start: String): Iterator[String] = {
     Iterator.continually(turns).flatten.scanLeft(start) { (name, left) =>
       if left then network(name)._1 else network(name)._2

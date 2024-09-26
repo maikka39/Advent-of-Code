@@ -1,14 +1,14 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
 import adventofcode.utils.SeqUtils.given
 import adventofcode.utils.TupleUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
 import scala.language.implicitConversions
 
-object Problem11 extends Problem {
+object Day11 extends Day {
   private def parseGalaxies(input: String, multiplier: Int) = {
     val grid = input.grid
 

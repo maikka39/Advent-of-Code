@@ -1,7 +1,7 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 import adventofcode.utils.StringUtils.StringImprovements
 import adventofcode.utils.NumberUtils.IntUtils
 import adventofcode.utils.SeqUtils.SeqImprovements
@@ -9,7 +9,7 @@ import adventofcode.utils.IterableUtils.IterableImprovements
 
 import scala.language.implicitConversions
 
-object Problem1 extends Problem {
+object Day1 extends Day {
   override def part1(input: String): Answer = {
     input
       .splitLines

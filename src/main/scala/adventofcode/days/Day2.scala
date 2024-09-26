@@ -1,12 +1,12 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 
 import scala.language.implicitConversions
 
-object Problem2 extends Problem {
+object Day2 extends Day {
   private def parseGame(game: String): (Int, Array[Map[String, Int]]) = {
     game match
       case s"Game $gameId: $bagReveals" => (gameId.toInt, bagReveals.split("; ").map(_.split(", ").map {

@@ -1,14 +1,14 @@
-package adventofcode.problems
+package adventofcode.days
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Problem}
+import adventofcode.{Answer, Day}
 import adventofcode.utils.StringUtils.StringImprovements
 
 import scala.annotation.tailrec
 import scala.language.implicitConversions
 import scala.math.pow
 
-object Problem4 extends Problem {
+object Day4 extends Day {
   private case class Card(id: Int, winningNumbers: List[Int], myNumbers: List[Int])
 
   private def toCards(input: String): List[Card] = {
