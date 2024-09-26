@@ -2,7 +2,7 @@ package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 
 import scala.language.implicitConversions
 
@@ -15,11 +15,11 @@ object Problem9 extends Problem {
       values.last + extrapolate(diffs)
   }
 
-  override def part1(input: Input): Answer = {
-    input.lines.map(_.signedInts).map(extrapolate).sum
+  override def part1(input: String): Answer = {
+    input.splitLines.map(_.signedInts).map(extrapolate).sum
   }
 
-  override def part2(input: Input): Answer = {
-    input.lines.map(_.signedInts.reverse).map(extrapolate).sum
+  override def part2(input: String): Answer = {
+    input.splitLines.map(_.signedInts.reverse).map(extrapolate).sum
   }
 }

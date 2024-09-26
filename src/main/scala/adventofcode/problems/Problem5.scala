@@ -1,7 +1,7 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 import adventofcode.utils.StringUtils.StringImprovements
 
 import scala.annotation.tailrec
@@ -10,22 +10,22 @@ import scala.language.implicitConversions
 object Problem5 extends Problem {
   private case class Mapping(source: Long, dest: Long, length: Long)
 
-  private def getInputMappings(b: Input) = {
-    val s"$sourceName-to-$destName map:" = b.lines.head: @unchecked
+  private def getInputMappings(b: String) = {
+    val head :: tail = b.splitLines: @unchecked
+    val s"$sourceName-to-$destName map:" = head: @unchecked
 
-    val mappings = b.lines.tail.map { line =>
-      val dest :: source :: length :: Nil = line.longs: @unchecked
+    val mappings = tail.map { line =>
+      val List(dest, source, length) = line.longs
       Mapping(source, dest, length)
     }
 
     (sourceName, destName, mappings)
   }
 
-  override def part1(input: Input): Answer = {
-    val subInputs = input.toSubInputs
-    val seeds = subInputs.head.string.longs
+  override def part1(input: String): Answer = {
+    val seeds :: tail = input.splitByBlankLines: @unchecked
     val mappings = {
-      subInputs.tail.foldLeft(Map.empty[String, (String, Long => Long)]) { (a, b) =>
+      tail.foldLeft(Map.empty[String, (String, Long => Long)]) { (a, b) =>
         val (sourceName, destName, mapping) = getInputMappings(b)
 
         val x = { (n: Long) =>
@@ -41,15 +41,15 @@ object Problem5 extends Problem {
     }
 
     seeds
+      .longs
       .map(value => mapToLocation("seed", value))
       .min
   }
 
-  override def part2(input: Input): Answer = {
-    val subInputs = input.toSubInputs
-    val seeds = subInputs.head.string.longs
+  override def part2(input: String): Answer = {
+    val seeds :: tail = input.splitByBlankLines: @unchecked
     val mappings = {
-      subInputs.tail.foldLeft(Map.empty[String, (String, Long => Long)]) { (a, b) =>
+      tail.foldLeft(Map.empty[String, (String, Long => Long)]) { (a, b) =>
         val (sourceName, destName, mapping) = getInputMappings(b)
 
         val x = { (n: Long) =>
@@ -64,11 +64,9 @@ object Problem5 extends Problem {
       if (currentType == "seed") value else mapToSeed(mappings(currentType)._1, mappings(currentType)._2(value))
     }
 
-    def isValidSeed(seed: Long) = {
-      seeds
-        .sliding(2, 2)
-        .exists(r => seed >= r.head && seed < (r.head + r.last))
-    }
+    val slidingSeeds = seeds.longs.sliding(2, 2).toList
+
+    def isValidSeed(seed: Long) = slidingSeeds.exists(r => seed >= r.head && seed < (r.head + r.last))
 
     LazyList.from(0).find(n => isValidSeed(mapToSeed("location", n))).get
   }

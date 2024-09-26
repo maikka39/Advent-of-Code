@@ -2,7 +2,7 @@ package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
 import adventofcode.utils.StringUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 
 object Problem6 extends Problem {
   private def winCount(totalTime: Long, recordDistance: Long): Int = {
@@ -11,9 +11,9 @@ object Problem6 extends Problem {
     (1L until totalTime).map(result).count(_ == true)
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     val times :: distances :: Nil = input
-      .lines
+      .splitLines
       .map(_
         .dropWhile(!_.equals(':'))
         .drop(1)
@@ -23,9 +23,9 @@ object Problem6 extends Problem {
     times.zip(distances).map(winCount).product
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     val totalTime :: record :: Nil = input
-      .lines
+      .splitLines
       .map(_
         .dropWhile(!_.equals(':'))
         .drop(1)

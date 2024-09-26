@@ -1,9 +1,10 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
+import adventofcode.utils.StringUtils.given
 import adventofcode.utils.IteratorUtils.given
 import adventofcode.utils.MathUtils.lcm
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 
 import scala.language.implicitConversions
 
@@ -14,24 +15,24 @@ object Problem8 extends Problem {
     }
   }
 
-  private def parse(input: Input) = {
+  private def parse(input: String) = {
     val (turns, mapping) = input.splitByBlankLine
 
     val network = mapping
-      .lines
+      .splitLines
       .map { case s"$name = ($left, $right)" => name -> (left, right) }
       .toMap
 
-    (network, turns.string.map(_ == 'L'))
+    (network, turns.map(_ == 'L'))
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     val (network, turns) = parse(input)
 
     path(network, turns, "AAA").indexOf("ZZZ")
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     val (network, turns) = parse(input)
 
     val startNodes = network.keys.filter(_.endsWith("A"))

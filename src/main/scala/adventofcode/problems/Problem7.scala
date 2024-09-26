@@ -1,7 +1,8 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.utils.StringUtils.given
+import adventofcode.{Answer, Problem}
 
 object Problem7 extends Problem {
   private def toScore(char: Char): Int = {
@@ -35,9 +36,9 @@ object Problem7 extends Problem {
       case 1 => 0
   }
 
-  private def solve(input: Input, sorting: List[Int] => String): Int = {
+  private def solve(input: String, sorting: List[Int] => String): Int = {
     input
-      .lines
+      .splitLines
       .map(line => line.splitAt(line.indexOf(' ')))
       .map { case (hand, bid) =>
         sorting(hand.toList.map(toScore)) -> bid.strip().toInt
@@ -49,11 +50,11 @@ object Problem7 extends Problem {
       .sum
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     solve(input, hand => handScore(hand, false).toChar + hand.map(_.toChar).mkString)
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     solve(input, hand => handScore(hand, true).toChar + hand.map(v => if (v == 11) 1 else v).map(_.toChar).mkString)
   }
 }

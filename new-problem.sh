@@ -53,16 +53,17 @@ fi
 echo -n "package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.utils.StringUtils.given
+import adventofcode.{Answer, Problem}
 
 import scala.language.implicitConversions
 
 object Problem${problem} extends Problem {
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     0
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     0
   }
 }

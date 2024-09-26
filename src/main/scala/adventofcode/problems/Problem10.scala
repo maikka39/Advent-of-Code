@@ -1,14 +1,15 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
+import adventofcode.utils.StringUtils.given
 import adventofcode.utils.SeqUtils.{Pos2d, given}
 import adventofcode.utils.TupleUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 
 import scala.annotation.tailrec
 
 object Problem10 extends Problem {
-  private def parseMap(input: Input) = {
+  private def parseMap(input: String) = {
     val origGrid = input.grid
 
     def charToDirection(value: Char): Set[Pos2d] = {
@@ -44,7 +45,7 @@ object Problem10 extends Problem {
     (grid, start)
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     val (grid, start) = parseMap(input)
 
     @tailrec
@@ -58,7 +59,7 @@ object Problem10 extends Problem {
     loopSize(start, start, 0) / 2
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     val (grid, start) = parseMap(input)
 
     @tailrec

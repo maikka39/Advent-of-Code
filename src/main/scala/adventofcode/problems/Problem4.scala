@@ -1,7 +1,7 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 import adventofcode.utils.StringUtils.StringImprovements
 
 import scala.annotation.tailrec
@@ -11,15 +11,15 @@ import scala.math.pow
 object Problem4 extends Problem {
   private case class Card(id: Int, winningNumbers: List[Int], myNumbers: List[Int])
 
-  private def toCards(input: Input): List[Card] = {
+  private def toCards(input: String): List[Card] = {
     input
-      .lines
+      .splitLines
       .map {
         case s"Card $id: $winningNumbers | $myNumbers" => Card(id.strip().toInt, winningNumbers.ints, myNumbers.ints)
       }
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     toCards(input)
       .map { card =>
         card.myNumbers.count(card.winningNumbers.contains(_))
@@ -28,7 +28,7 @@ object Problem4 extends Problem {
       .sum
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     val cards = toCards(input)
     val cardScores = cards.map { card =>
       card.id -> card.myNumbers.count(card.winningNumbers.contains(_))

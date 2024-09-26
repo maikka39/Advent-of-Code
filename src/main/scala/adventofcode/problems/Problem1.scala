@@ -1,7 +1,7 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.{Answer, Problem}
 import adventofcode.utils.StringUtils.StringImprovements
 import adventofcode.utils.NumberUtils.IntUtils
 import adventofcode.utils.SeqUtils.SeqImprovements
@@ -10,19 +10,19 @@ import adventofcode.utils.IterableUtils.IterableImprovements
 import scala.language.implicitConversions
 
 object Problem1 extends Problem {
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     input
-      .lines
+      .splitLines
       .map(_.shortInts)
       .map(ints => ints.head.concat(ints.last))
       .sum
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     val digits = List("one", "two", "three", "four", "five", "six", "seven", "eight", "nine").zip(1 to 9).toMap
 
     input
-      .lines
+      .splitLines
       .map(line =>
         digits.flatMap(_._1.r.findAllMatchIn(line)).map(m => (m.start, digits(m.matched)))
           ++ "\\d".r.findAllMatchIn(line).map(m => (m.start, m.matched.toInt)))

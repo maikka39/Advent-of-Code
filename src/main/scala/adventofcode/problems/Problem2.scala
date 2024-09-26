@@ -1,7 +1,8 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.utils.StringUtils.given
+import adventofcode.{Answer, Problem}
 
 import scala.language.implicitConversions
 
@@ -13,20 +14,20 @@ object Problem2 extends Problem {
       }.toMap))
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     val bag = Map(("red", 12), ("green", 13), ("blue", 14))
 
     input
-      .lines
+      .splitLines
       .map(parseGame)
       .filterNot(game => game._2.exists(set => set.exists(part => part._2 > bag(part._1))))
       .map(_._1)
       .sum
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     input
-      .lines
+      .splitLines
       .map(parseGame(_)._2)
       .map(sets => sets.fold(Map.empty[String, Int]) { (a, b) =>
         (a ++ b).map(e =>

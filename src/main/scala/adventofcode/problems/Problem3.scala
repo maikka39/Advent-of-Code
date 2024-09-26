@@ -1,22 +1,23 @@
 package adventofcode.problems
 
 import adventofcode.utils.AnswerUtils.given
-import adventofcode.{Answer, Input, Problem}
+import adventofcode.utils.StringUtils.given
+import adventofcode.{Answer, Problem}
 import adventofcode.utils.TupleUtils.IntTupleImprovements
 import adventofcode.utils.SeqUtils.Seq2dImprovements
 
 import scala.language.implicitConversions
 
 object Problem3 extends Problem {
-  private def findNumbers(input: Input) = {
+  private def findNumbers(input: String) = {
     input
-      .lines
+      .splitLines
       .map("\\d+".r.findAllMatchIn(_).toList)
       .zipWithIndex
       .flatMap((lm, y) => lm.map(m => (m.matched.toInt, (m.start until m.end).map((y, _)))))
   }
 
-  override def part1(input: Input): Answer = {
+  override def part1(input: String): Answer = {
     val grid = input.grid
 
     findNumbers(input)
@@ -32,7 +33,7 @@ object Problem3 extends Problem {
       .sum
   }
 
-  override def part2(input: Input): Answer = {
+  override def part2(input: String): Answer = {
     val grid = input.grid
 
     findNumbers(input)
